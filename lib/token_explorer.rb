@@ -30,11 +30,11 @@ module TokenExplorer
       token.available_supply = output['price']['availableSupply']
       token.volume_24h = output['price']['volume24h']
       token.price_currency = output['price']['currency']
-      output
+      token(token)
     end
 
     def token(token)
-      
+      token
     end
 
     def api_url(address)
