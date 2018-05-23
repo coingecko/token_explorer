@@ -4,8 +4,8 @@ require "token_explorer/models/token"
 
 module TokenExplorer
   class Client
-    def get_token_info(address)
-      output = JSON.parse(HTTP.get(api_url(address)))
+    def get_token(address)
+      output = JSON.parse(HTTP.timeout(:write => 2, :connect => 5, :read => 8).get(api_url(address)))
 
       token = TokenExplorer::Models::Token.new
       token.address = output['address']
@@ -30,13 +30,9 @@ module TokenExplorer
       token.available_supply = output['price']['availableSupply']
       token.volume_24h = output['price']['volume24h']
       token.price_currency = output['price']['currency']
-      token(token)
-    end
-
-    def token(token)
       token
     end
-
+    
     def api_url(address)
      "https://api.ethplorer.io/getTokenInfo/#{address}?apiKey=freekey"
     end

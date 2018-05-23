@@ -7,10 +7,6 @@ module TokenExplorer
                     :count_ops, :price, :price_change, :price_change_7d,
                     :price_change_30d, :price_timestamp, :market_cap_usd, :available_supply,
                     :volume_24h, :price_currency
-
-      # def initialize(params = {})
-      #   params.each { |key, value| send "#{key}=", value }
-      # end
     end
   end
 end
