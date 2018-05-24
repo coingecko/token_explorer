@@ -7,15 +7,6 @@ VCR.configure do |config|
   config.hook_into :webmock
 end
 
-# class VCRTest < Test::Unit::TestCase
-#   def test_example_dot_com
-#     VCR.use_cassette("synopsis") do
-#       response = Net::HTTP.get_response(URI('http://www.iana.org/domains/reserved'))
-#       assert_match /Example domains/, response.body
-#     end
-#   end
-# end
-
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
