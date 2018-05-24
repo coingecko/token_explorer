@@ -1,5 +1,6 @@
 require "token_explorer/version"
 require "http"
+require "yaml"
 require "token_explorer/models/token"
 require "token_explorer/helpers/numeric_helper"
 
@@ -36,7 +37,9 @@ module TokenExplorer
     end
     
     def api_url(address)
-     "https://api.ethplorer.io/getTokenInfo/#{address}?apiKey=freekey"
+      config = YAML.load_file('config/config.yml')
+      api_key = config['config']['api_key']
+     "https://api.ethplorer.io/getTokenInfo/#{address}?apiKey=#{api_key}"
     end
   end
 end
