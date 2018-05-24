@@ -25,11 +25,12 @@ module TokenExplorer
       token.price_change = output['price']['diff']
       token.price_change_7d = output['price']['diff7d']
       token.price_change_30d = output['price']['diff30d']
-      token.price_timestamp = Time.now.to_i
+      token.price_timestamp = output['price']['ts']
       token.market_cap_usd = output['price']['marketCapUsd']
       token.available_supply = output['price']['availableSupply']
       token.volume_24h = output['price']['volume24h']
       token.price_currency = output['price']['currency']
+      token.output = output
       token
     end
     
