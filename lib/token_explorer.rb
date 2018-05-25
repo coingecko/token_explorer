@@ -2,10 +2,10 @@ require "token_explorer/version"
 require "http"
 require "yaml"
 require "token_explorer/models/token"
-require "token_explorer/helpers/numeric_helper"
 
 module TokenExplorer
   class Client
+
     def get_token(address)
       output = JSON.parse(HTTP.timeout(:write => 2, :connect => 5, :read => 8).get(api_url(address)))
 
@@ -37,9 +37,14 @@ module TokenExplorer
     end
     
     def api_url(address)
-      config = YAML.load_file('config/config.yml')
-      api_key = config['config']['api_key']
-     "https://api.ethplorer.io/getTokenInfo/#{address}?apiKey=#{api_key}"
+      if not File.exist?("config/token_explorer_config.yml")
+        config_file = {config: {api_key: "freekey"}}
+        File.write("config/token_explorer_config.yml", config_file.to_yaml)
+      end
+
+      config = YAML.load_file('config/token_explorer_config.yml')
+      api_key = config[:config][:api_key]
+      "https://api.ethplorer.io/getTokenInfo/#{address}?apiKey=#{api_key}"  
     end
   end
 end
