@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ethplorer.io/getTokenInfo/0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0?apiKey=freekey
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - api.ethplorer.io
+      User-Agent:
+      - http.rb/3.3.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 27 Jul 2018 06:12:21 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      X-Powered-By:
+      - PHP/7.0.28
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"address":"0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0","name":"EOS","decimals":18,"symbol":"EOS","totalSupply":"1000000000000000000000000000","owner":"0xd0a6e6c54dbc68db5db3a091b171a77407ff7ccf","transfersCount":3170931,"lastUpdated":1531913635,"issuancesCount":0,"holdersCount":331093,"description":"https://eos.io/","ethTransfersCount":224,"price":{"rate":"8.23534","diff":-4.35,"diff7d":0.19,"ts":"1532671714","marketCapUsd":"7380095759.0","availableSupply":"896149492.0","volume24h":"680878000.0","diff30d":8.6039528360499,"currency":"USD"},"countOps":3170931}'
+    http_version: 
+  recorded_at: Fri, 27 Jul 2018 06:12:21 GMT
+recorded_with: VCR 4.0.0

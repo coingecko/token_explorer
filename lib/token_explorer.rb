@@ -13,6 +13,7 @@ module TokenExplorer
       token.address          = output['address']
       token.name             = output['name']
       token.symbol           = output['symbol']
+      token.decimals         = output['decimals'].to_i
       token.total_supply     = output['totalSupply'].to_f
       token.owner            = output['owner']
       token.transfer_count   = output['transfersCount']
@@ -23,15 +24,19 @@ module TokenExplorer
       token.holders_count    = output['holdersCount']
       token.description      = output['description']
       token.count_ops        = output['countOps']
+      token.eth_transfer_count = output['ethTransfersCount'].to_f
       token.price            = output['rate'].to_f
-      token.price_change     = output['price']['diff']
-      token.price_change_7d  = output['price']['diff7d']
-      token.price_change_30d = output['price']['diff30d']
-      token.price_timestamp  = output['price']['ts'].to_i
-      token.market_cap_usd   = output['price']['marketCapUsd'].to_f
-      token.available_supply = output['price']['availableSupply'].to_f
-      token.volume_24h       = output['price']['volume24h'].to_f
-      token.price_currency   = output['price']['currency']
+
+      if output['price']
+        token.price_change     = output['price']['diff']
+        token.price_change_7d  = output['price']['diff7d']
+        token.price_change_30d = output['price']['diff30d']
+        token.price_timestamp  = output['price']['ts'].to_i
+        token.market_cap_usd   = output['price']['marketCapUsd'].to_f
+        token.available_supply = output['price']['availableSupply'].to_f
+        token.volume_24h       = output['price']['volume24h'].to_f
+        token.price_currency   = output['price']['currency']
+      end
       token.output           = output
       token
     end
